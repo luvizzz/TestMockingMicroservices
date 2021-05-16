@@ -17,6 +17,7 @@
     <modules>
         <module>rental-service</module>
         <module>lease-service</module>
+        <module>customer-service</module>
     </modules>
 
     <properties>
