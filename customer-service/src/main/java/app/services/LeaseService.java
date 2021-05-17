@@ -3,12 +3,14 @@ package app.services;
 import app.domain.leaseService.Lease;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.logging.Logger;
 
+@Component
 @Service("Lease")
 public class LeaseService {
     private static final Logger LOG = Logger.getLogger(LeaseService.class.getSimpleName());
@@ -23,10 +25,10 @@ public class LeaseService {
     }
 
     public List<Lease> getLeases(String customer) {
-        return restTemplate.getForObject("http://localhost:8090/customer/{customer}/lease", List.class, customer);
+        return restTemplate.getForObject(serviceBaseUri + "/customer/{customer}/lease", List.class, customer);
     }
 
     public Lease getMostRecentLease(String customer) {
-        return restTemplate.getForObject("http://localhost:8090/customer/{customer}/lease/mostRecent", Lease.class, customer);
+        return restTemplate.getForObject(serviceBaseUri + "/customer/{customer}/lease/mostRecent", Lease.class, customer);
     }
 }
