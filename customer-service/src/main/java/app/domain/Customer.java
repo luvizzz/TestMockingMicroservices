@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 public class Customer {
 
-    private List<Rent> rentals;
+    private final List<Rent> rentals;
 
-    private List<Lease> leases;
+    private final List<Lease> leases;
 
     public Customer(List<Rent> rentals, List<Lease> leases) {
         this.rentals = rentals;

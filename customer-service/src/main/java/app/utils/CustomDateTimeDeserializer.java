@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class CustomDateTimeDeserializer extends StdDeserializer<DateTime> {
     private static final long serialVersionUID = 1L;
-    private static DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd");
 
     public CustomDateTimeDeserializer() {
         this(null);
