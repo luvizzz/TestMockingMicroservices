@@ -5,8 +5,8 @@ import app.utils.JsonProperty;
 import app.utils.Utils;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.annotations.ApiModelProperty;
-import org.apache.logging.log4j.util.Strings;
 import org.joda.time.DateTime;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,7 +14,6 @@ import javax.persistence.IdClass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "lease")
@@ -29,6 +28,7 @@ public class Lease {
     private String carId;
 
     @OneToMany
+    @Nullable
     private List<Payment> payments;
 
     private LeaseStatus leaseStatus;
@@ -77,6 +77,7 @@ public class Lease {
         return endDate;
     }
 
+    @Nullable
     public List<Payment> getPayments() {
         return payments;
     }
@@ -85,7 +86,7 @@ public class Lease {
         return leaseStatus;
     }
 
-    public void setPayments(List<Payment> payments) {
+    public void setPayments(@Nullable List<Payment> payments) {
         this.payments = payments;
     }
 
@@ -96,17 +97,8 @@ public class Lease {
                 new JsonProperty("carId", carId == null ? "null" : carId),
                 new JsonProperty("startDate", startDate == null ? "null" : startDate.toString()),
                 new JsonProperty("endDate", endDate == null ? "null" : endDate.toString()),
-                new JsonProperty("LeaseStatus", leaseStatus == null ? "null" : leaseStatus.toString()),
-                new JsonProperty("payments", paymentsToString())
+                new JsonProperty("leaseStatus", leaseStatus == null ? "null" : leaseStatus.toString()),
+                new JsonProperty("payments", payments == null ? List.of() : payments)
             ));
-    }
-
-    private String paymentsToString() {
-        if (payments == null) {
-            return Strings.EMPTY;
-        }
-        return payments.stream()
-                .map(Object::toString)
-                .collect(Collectors.joining("; " , "[", "]"));
     }
 }

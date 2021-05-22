@@ -96,7 +96,7 @@ public class Rent {
                 new JsonProperty("endDate", endDate == null ? "null" : endDate.toString()),
                 new JsonProperty("cost", cost),
                 new JsonProperty("paymentStatus", paymentStatus == null ? "null" : paymentStatus.toString()),
-                new JsonProperty("RentalStatus", rentalStatus == null ? "null" : rentalStatus.toString())
+                new JsonProperty("rentalStatus", rentalStatus == null ? "null" : rentalStatus.toString())
             ));
     }
 }
