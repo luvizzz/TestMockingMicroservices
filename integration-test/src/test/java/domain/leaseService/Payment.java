@@ -1,9 +1,9 @@
 package domain.leaseService;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import domain.PaymentStatus;
-import org.testcontainers.shaded.com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonInclude(JsonInclude.Include.NON_NULL) 	//  ignore all null fields
 public class Payment {
     private String customer;
     private Integer leaseId;
@@ -150,5 +150,18 @@ public class Payment {
         result = 31 * result + (leaseId != null ? leaseId.hashCode() : 0);
         result = 31 * result + (paymentId != null ? paymentId.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "customer='" + customer + '\'' +
+                ", leaseId=" + leaseId +
+                ", paymentId=" + paymentId +
+                ", cost=" + cost +
+                ", paymentStatus=" + paymentStatus +
+                ", month=" + month +
+                ", year=" + year +
+                '}';
     }
 }

@@ -6,6 +6,8 @@ import org.springframework.lang.Nullable;
 
 import java.util.Optional;
 
+import static utils.DateUtils.datesAreEqual;
+
 @JsonInclude(JsonInclude.Include.NON_NULL) 	//  ignore all null fields
 public class Rent {
     @Nullable
@@ -183,8 +185,8 @@ public class Rent {
         if (cost != null ? !cost.equals(rent.cost) : rent.cost != null) return false;
         if (paymentStatus != rent.paymentStatus) return false;
         if (rentalStatus != rent.rentalStatus) return false;
-        if (startDate != null ? !startDate.equals(rent.startDate) : rent.startDate != null) return false;
-        return endDate != null ? endDate.equals(rent.endDate) : rent.endDate == null;
+        if (startDate != null ? !datesAreEqual(startDate, rent.startDate) : rent.startDate != null) return false;
+        return endDate != null ? datesAreEqual(endDate, rent.endDate) : rent.endDate == null;
     }
 
     @Override
@@ -192,5 +194,19 @@ public class Rent {
         int result = customer != null ? customer.hashCode() : 0;
         result = 31 * result + (rentalId != null ? rentalId.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Rent{" +
+                "customer='" + customer + '\'' +
+                ", rentalId=" + rentalId +
+                ", carId='" + carId + '\'' +
+                ", cost=" + cost +
+                ", paymentStatus=" + paymentStatus +
+                ", rentalStatus=" + rentalStatus +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
     }
 }

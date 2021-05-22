@@ -18,12 +18,12 @@ import steps.RentalServiceSteps;
 import java.util.List;
 
 import static org.apache.http.HttpStatus.SC_CREATED;
-import static utils.CustomDateTimeFormatters.formatToLeaseServiceDate;
-import static utils.CustomDateTimeFormatters.formatToRentalServiceDate;
+import static utils.DateUtils.formatToLeaseServiceDate;
+import static utils.DateUtils.formatToRentalServiceDate;
 import static utils.TestDataRandom.randomCarId;
 import static utils.TestDataRandom.randomCustomerId;
 
-public class ContainerizedTestWithAllServicesContainerized extends BaseContainerizedTest {
+public class TestWithAllServicesContainerized extends BaseContainerizedTest {
 
     RentalServiceSteps rentalServiceSteps = new RentalServiceSteps();
 

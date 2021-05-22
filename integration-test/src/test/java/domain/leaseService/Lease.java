@@ -6,6 +6,8 @@ import org.springframework.lang.Nullable;
 import java.util.List;
 import java.util.Optional;
 
+import static utils.DateUtils.datesAreEqual;
+
 @JsonInclude(JsonInclude.Include.NON_NULL) 	//  ignore all null fields
 public class Lease {
     @Nullable
@@ -163,8 +165,8 @@ public class Lease {
         if (carId != null ? !carId.equals(lease.carId) : lease.carId != null) return false;
         if (payments != null ? !payments.equals(lease.payments) : lease.payments != null) return false;
         if (leaseStatus != lease.leaseStatus) return false;
-        if (startDate != null ? !startDate.equals(lease.startDate) : lease.startDate != null) return false;
-        return endDate != null ? endDate.equals(lease.endDate) : lease.endDate == null;
+        if (startDate != null ? !datesAreEqual(startDate, lease.startDate) : lease.startDate != null) return false;
+        return endDate != null ? datesAreEqual(endDate, lease.endDate) : lease.endDate == null;
     }
 
     @Override
@@ -172,5 +174,18 @@ public class Lease {
         int result = customer != null ? customer.hashCode() : 0;
         result = 31 * result + (leaseId != null ? leaseId.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Lease{" +
+                "customer='" + customer + '\'' +
+                ", leaseId=" + leaseId +
+                ", carId='" + carId + '\'' +
+                ", payments=" + payments +
+                ", leaseStatus=" + leaseStatus +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
     }
 }

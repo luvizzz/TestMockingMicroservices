@@ -14,10 +14,11 @@
         <maven.compiler.target>11</maven.compiler.target>
         <rest.assured.version>4.2.0</rest.assured.version>
         <testcontainers.version>1.15.3</testcontainers.version>
-        <postgresql.version>1.14.3</postgresql.version>
-        <testcontainers.version>1.14.3</testcontainers.version>
+        <mockserver.version>1.15.3</mockserver.version>
+        <mockserver-client.version>5.11.2</mockserver-client.version>
+        <postgresql.version>1.15.3</postgresql.version>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
-        <testcontainers-jupiter.version>1.14.3</testcontainers-jupiter.version>
+        <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>
         <jackson-databind.version>2.11.0</jackson-databind.version>
         <assertj.version>3.17.2</assertj.version>
     </properties>
@@ -39,6 +40,17 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mockserver</artifactId>
+            <version>${mockserver.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-client-java</artifactId>
+            <version>${mockserver-client.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
