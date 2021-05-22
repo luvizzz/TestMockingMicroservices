@@ -15,14 +15,14 @@ Operations available:
 - DELETE /customer/{customer}/lease/{lease}/payment
 - DELETE /customer/{customer}/lease/{lease}/payment/{paymentId}
 
-##How to start lease-service
+## How to start lease-service
 
 - Using terminal, navigate to lease-service root folder: `cd ~/git/TestMockingMicroservices/lease-service`
 - Create a jar file to be executed using maven: `mvn clean package`
 - Start a postgres instance of the database: `docker run -d -p 5433:5432 -e POSTGRES_PASSWORD=postgres postgres`
 - Start the jar file `java -jar target/lease-service-1.0-SNAPSHOT.jar`
 
-##How to generate docker image of lease-service
+## How to generate docker image of lease-service
 
 On a terminal:
 - Make sure docker is running (by executing `docker ps`).

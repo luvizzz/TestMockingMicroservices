@@ -8,13 +8,13 @@ Operations available:
 - GET /customer/{customer}
 - GET /customer/{customer}/mostRecent
 
-##How to start customer-service
+## How to start customer-service
 
 - Using terminal, navigate to customer-service root folder: `cd ~/git/TestMockingMicroservices/customer-service`
 - Create a jar file to be executed using maven: `mvn clean package`
 - Start the jar file `java -jar target/customer-service-1.0-SNAPSHOT.jar`
 
-##How to generate docker image of customer-service
+## How to generate docker image of customer-service
 
 On a terminal:
 - Make sure docker is running (by executing `docker ps`).
